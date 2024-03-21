@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mapper.BookMapper">
+    <update id="editBook">
+        update book
+        <set>
+            <if test="name !=null and name.trim()!=''">
+                book_name=#{name},
+            </if>
+            <if test="isbn !=null and isbn.trim()!=''">
+                book_isbn=#{isbn},
+            </if>
+            <if test="press !=null and press.trim()!=''">
+                book_press=#{press},
+            </if>
+            <if test="author !=null and author.trim()!=''">
+                book_author=#{author},
+            </if>
+            <if test="pagination !=null ">
+                book_pagination=#{pagination},
+            </if>
+            <if test="price !=null ">
+                book_price=#{price},
+            </if>
+            <if test="uploadTime !=null and uploadTime.trim()!=''">
+                book_uploadTime=#{uploadTime},
+            </if>
+            <if test="status !=null and status.trim()!=''">
+                book_status=#{status},
+            </if>
+            <if test="borrower !=null ">
+                book_borrower=#{borrower},
+            </if>
+            <if test="borrowTime !=null ">
+                book_borrowTime=#{borrowTime},
+            </if>
+            <if test="returnTime !=null ">
+                book_returnTime=#{returnTime},
+            </if>
+        </set>
+        where book_id=#{id}
+    </update>
+    <insert id="addBook">
+        INSERT INTO book
+        values (#{id}, #{name}, #{isbn}, #{press}, #{author}, #{pagination}, #{price}, #{uploadTime}, #{status},
+                #{borrower}, #{borrowTime}, #{returnTime})
+    </insert>
+</mapper>
